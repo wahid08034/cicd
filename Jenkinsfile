@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        REGISTRY = "wahaduzzaman"
+        REGISTRY = "hub.docker.com"
         APP_NAME = "simple-html-app"
         IMAGE_TAG = "${REGISTRY}/${APP_NAME}:${env.BUILD_NUMBER}"
         DOCKER_CREDENTIALS = 'docker-hub-credentials' // Replace with your credentials ID in Jenkins
@@ -31,7 +31,7 @@ pipeline {
                 script {
                     // Run a temporary container to test
                     sh "docker run --rm -d -p 8080:80 ${IMAGE_TAG}"
-                    sh "curl -f http://192.168.60.147:8080"
+                    sh "curl -f http://192.168.1.182:8080"
                 }
             }
         }
